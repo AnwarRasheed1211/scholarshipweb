@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import Profile from "../components/Profile";
 import styles from "../styles/Profile.module.css";
 import Link from "next/link";
-import circularProg from "../components/CircleProgress"
 
 export default function ProfilePage() {
 
@@ -19,8 +18,6 @@ export default function ProfilePage() {
       <div className={styles.line} />
       <div className={styles['body']}>
         <div>
-          <div className={circularProg}>
-          </div>
           <div className={styles['profile-page']} />
           <div>
             <Link href={'/studentHome'}>
@@ -29,7 +26,6 @@ export default function ProfilePage() {
             <Profile user={user} />
           </div>
         </div>
-        
       </div>
     </>
   );
