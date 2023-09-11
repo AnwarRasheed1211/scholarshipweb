@@ -1,33 +1,55 @@
-import React from "react";
-import {CircularProgress, Card, CardBody, CardFooter, Chip} from "@nextui-org/react";
+import styles from './home.module.css';
+import React, { useState, useEffect } from 'react';
+import { Card, CardBody, CardFooter, Chip, CircularProgress } from "@nextui-org/react";
 
-export default function App() {
+const CircularProgressCard = () => {
+  const [progressValue, setProgressValue] = useState(0);
+  const progressLimit = 100; // Set your desired progress limit
+
+  // Function to manually update progress with a limit
+  const updateProgress = () => {
+    if (progressValue < progressLimit) {
+      const newValue = progressValue + 10;
+      setProgressValue(newValue > progressLimit ? progressLimit : newValue);
+    }
+  };
+
+  // Use a useEffect if you want to automatically update the progress
+  useEffect(() => {
+    const interval = setInterval(updateProgress, 500);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <Card className="w-[240px] h-[240px] border-none bg-gradient-to-br from-violet-500 to-fuchsia-500">
-      <CardBody className="justify-center items-center pb-0">
+    <Card className={styles["circular-progress-card"]}>
+      <CardBody className={styles["progress-container"]}>
         <CircularProgress
           classNames={{
-            svg: "w-36 h-36 drop-shadow-md",
-            indicator: "stroke-white",
-            track: "stroke-white/10",
-            value: "text-3xl font-semibold text-white",
+            svg: styles["circular-progress"],
+            indicator: styles["progress-indicator"],
+            track: styles["progress-track"],
+            value: styles["progress-value"],
           }}
-          value={70}
+          value={progressValue}
           strokeWidth={4}
-          showValueLabel={true}
+          showValueLabel={false} // Disable the default value label
         />
+        <div className={styles["chip-container"]}>
+          <Chip
+            classNames={{
+              base: styles["chip"],
+              content: styles["chip-content"],
+            }}
+            variant="bordered"
+          >
+            {progressValue} Working Hours
+          </Chip>
+        </div>
       </CardBody>
-      <CardFooter className="justify-center items-center pt-0">
-        <Chip
-          classNames={{
-            base: "border-1 border-white/30",
-            content: "text-white/90 text-small font-semibold",
-          }}
-          variant="bordered"
-        >
-          2800 Data points
-        </Chip>
-      </CardFooter>
+      <CardFooter className={styles["progress-container"]}></CardFooter>
     </Card>
   );
-}
+};
+
+export default CircularProgressCard;
