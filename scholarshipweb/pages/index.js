@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import styles from '../components/login.module.css';
+import styles from '../styles/login.module.css';
 import Image from 'next/image';
 
 
@@ -29,7 +29,7 @@ export default function LoginPage() {
     <div className={styles['login-page']}>
       <div className={styles['login-container']}>
         <div className={styles['login-content']}>
-          <Image src="/abac_logo.png" alt="Image" width={40} height={40} className={styles['logo-image']}/>
+          <Image src="/abac_logo.png" alt="Image" width={100} height={100} className={styles['logo-image']}/>
           <div className={styles['login-heading-container']}>
             <div className={styles['login-heading']}>Scholarship
             </div>
@@ -39,13 +39,13 @@ export default function LoginPage() {
         <div className={styles['form-group']}>
           <label className={styles['label']}>Email</label>
           <div className={styles['input-group']}>
-          <input type="email" value={email} onChange={handleEmailChange} />
+          <input type="email" value={email} onChange={handleEmailChange} className={styles['input-color']} size={30} />
           </div>
         </div>
         <div className={styles['form-group']}>
           <label className={styles['label']}>Password</label>
           <div className={styles['input-group']}>
-          <input type="password" value={password} onChange={handlePasswordChange} />
+          <input type="password" value={password} onChange={handlePasswordChange} className={styles['input-color']} size={30}/>
           </div>
         </div>
         <div className={styles['buttons-container']}>

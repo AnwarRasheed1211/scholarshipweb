@@ -75,10 +75,10 @@ export default function Register() {
         <div className={styles['works-list']}>
           <div>
                 {works.map((work) => (
-                <div key={work.id} onClick={() => handleWorkClick(work.id) }className={styles['work-item']}>
+                <div key={work.id} onClick={() => handleWorkClick(work.id) }className={styles['work-item']} tabIndex="1">
                   <img src= {work.image} 
                   alt={`Image for ${work.title}`}
-                  style={{width: '100px', height: 'auto'}} 
+                  style={{width: '100px', height: 'auto', borderRadius: '25px'}} 
                   />
                 <div className={styles['work-details']}>
                   <div className={styles['work-title']}>{work.title}</div>
@@ -105,7 +105,7 @@ export default function Register() {
               </div>
 
               <div className={styles['selected-image']}>
-                <img src={selectedWork.image} alt={`Image for ${selectedWork.title}`} style={{width: '100px', height: 'auto'}} />
+                <img src={selectedWork.image} alt={`Image for ${selectedWork.title}`} style={{width: '100px', height: 'auto', borderRadius: '25px'}} />
               </div>
               <h2>{selectedWork.title}</h2>
               <p>{selectedWork.description}</p>

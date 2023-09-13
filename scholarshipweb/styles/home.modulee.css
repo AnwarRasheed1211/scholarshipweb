@@ -102,8 +102,8 @@ flex: 1;
 
 .works-list {
 color: #121111;
-display: inline;
- /* Take up remaining space */
+display: flex;
+flex: 1; /* Take up remaining space */
 margin-right: 1rem; /* Add some spacing between the two sections */ 
 margin-left: 80px ;
 margin-top: 100px;
@@ -121,8 +121,8 @@ margin-top: 100px;
 
 .work-item {
   display: grid; /* Use flexbox for layout */
-  grid-template-columns: 13ch 30ch;
-  grid-template-rows: 18ch;
+  grid-template-columns: 13ch auto;
+  grid-template-rows: 16ch;
   align-items: center; /* Vertically align content */
   grid-gap: 10px;
  
@@ -154,7 +154,6 @@ justify-content: center;
   color: black;
   flex: 2; /* Take up twice the space of the works list */
   justify-content: center;
-
 
 }
 
@@ -273,7 +272,7 @@ margin-bottom: 10px; /* Add margin below the titles */
 .qualification-info {
 margin-top: 20px;
 padding: 20px;
-border: 1px solid transparent;
+border: 1px solid #ccc;
 
 }
 
@@ -492,8 +491,6 @@ color: black /* Specify your desired text color here */;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
-  
 }
 
 .work-title {
