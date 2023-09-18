@@ -2,10 +2,9 @@ import styles from '../components/home.module.css';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import StaffNavbar from '/components/staffNavbar';
-import CreateForm from '../components/Creatework';
-import Button from '../components/Button';
-import Modal from '../components/Modal';
+import StaffNavbar from '/components/StaffNavbar';
+import modal from '../components/Modal'
+
 
 
 export default function Home() {
@@ -30,9 +29,10 @@ export default function Home() {
       image: '/workpost.png',
       title: 'Work 1',
       description: 'Work 1 Description',
-      details: 'Work 1 Detail',
-      qualifications: 'Qualification information',
-      contacts: 'Contact information',
+      hours: 'Work 1 Hours',
+      location: 'Work 1 Location',
+      qualifications: 'Qualification information 1',
+      contacts: 'Contact information 1',
       studentApplied: [
         { info: 'Student Applied 1' },
       ],
@@ -45,9 +45,10 @@ export default function Home() {
       image: '/workpost.png',
       title: 'Work 2',
       description: 'Work 2 Description',
-      details: 'Work 2 Detail',
-      qualifications: 'Qualification information',
-      contacts: 'Contact information',
+      hours: 'Work 2 Hours',
+      location: 'Work 2 Location',
+      qualifications: 'Qualification information 2',
+      contacts: 'Contact information 2',
       studentApplied: [
         { info: 'Student Applied 2' },
       ],
@@ -81,25 +82,19 @@ export default function Home() {
   return (
     <>
         <StaffNavbar />
-        <Button onClick={openModal} />
-        <Modal isOpen={isModalOpen} onClose={closeModal} />
-     
         <div className={styles.line} />
-        <h1 className={styles['textwork']}>
-          WORK
-          </h1>
         <div className={styles['home-page']}>        
           <div className={styles['works-list']}>
           <div>
               {works.map((work) => (
-              <div key={work.id} onClick={() => handleWorkClick(work.id) }className={styles['work-item']} tabIndex="1">
+              <div key={work.id} onClick={() => handleWorkClick(work.id) }className={styles['work-item']}>
                 <img src= {work.image} 
                 alt={`Image for ${work.title}`}
-                style={{width: '100px', height: 'auto',  borderRadius: '25px'}} 
+                style={{width: '100px', height: 'auto'}} 
                 />
               <div className={styles['work-details']}>
                 <div className={styles['work-title']}>{work.title}</div>
-                <div className={styles['work-description']}>{work.description}</div>
+                <div>{work.hours}</div>
               </div>
               </div>
             ))}
@@ -122,10 +117,11 @@ export default function Home() {
               </div>
 
               <div className={styles['selected-image']}>
-                <img src={selectedWork.image} alt={`Image for ${selectedWork.title}`} style={{width: '100px', height: 'auto', borderRadius: '25px'}} />
+                <img src={selectedWork.image} alt={`Image for ${selectedWork.title}`} style={{width: '100px', height: 'auto'}} />
               </div>
               <h2>{selectedWork.title}</h2>
-              <p>{selectedWork.description}</p>
+              <p>{selectedWork.hours}</p>
+              <p>{selectedWork.location}</p>
 
               <div className={styles['contact-section']}>
                 <div className={styles['title-container']}>
@@ -172,6 +168,11 @@ export default function Home() {
                 ) : (
                   <div className={styles['details-info']}>
                       <div className={styles['details-info']}>
+                        <h3>Description</h3>
+                        <p>{selectedWork.description}</p>
+                      </div>
+
+                      <div className={styles['details-info']}>
                         <h3>Qualification</h3>
                         <p>{selectedWork.qualifications}</p>
                       </div>
@@ -198,6 +199,7 @@ export default function Home() {
           )}
           
           </div>
+          <modal/>
         </div>   
     </>
     

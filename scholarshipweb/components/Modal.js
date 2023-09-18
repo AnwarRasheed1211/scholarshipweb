@@ -1,130 +1,64 @@
-import React, { useState } from 'react';
-import styles from './home.module.css';
+import React from "react";
 
-const Modal = ({ isOpen, onClose }) => {
-  if (!isOpen) {
-    return null;
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
+
+export default function App() {
+  const {isOpen, onOpen, onClose} = useDisclosure();
+  const [size, setSize] = React.useState('md')
+
+  const sizes = ["xs", "sm", "md", "lg", "xl", "2xl", "3xl", "4xl", "5xl", "full"];
+
+
+  const handleOpen = (size) => {
+    setSize(size)
+    onOpen();
   }
 
-  const [formData, setFormData] = useState({
-    title: '',
-    hours: '',
-    students: '',
-    datetime: '',
-    location: '',
-    details: '',
-    qualification: '',
-    contacts: '',
-  });
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Perform form submission logic here, e.g., sending data to a server.
-    console.log(formData);
-  };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
-
   return (
-    <div className={styles.modalOverlay}>
-      <div className={styles.modal}>
-        <h2 className={styles['create-text']}>Scholarship Work</h2>
-        <div className={styles['form-container']}>
-          <form onSubmit={handleSubmit} className={styles['create-form']}>
-            <div className={styles['form-columns-container']}>
-              <div className={styles['form-column']}>
-                <div className={styles['form-row']}>
-                  <label htmlFor="title">Title</label>
-                  <input
-                    type="text"
-                    id="title"
-                    name="title"
-                    value={formData.title}
-                    onChange={handleChange}
-                    required
-                  />
-
-                  <label htmlFor="hours">Scholarship Hours</label>
-                <input
-                  type="number"
-                  id="hours"
-                  name="hours"
-                  value={formData.hours}
-                  onChange={handleChange}
-                  required
-                />
-
-                <label htmlFor="students">Limited Students Number</label>
-                <input
-                  type="number"
-                  id="students"
-                  name="students"
-                  value={formData.students}
-                  onChange={handleChange}
-                  required
-                />
-
-                <label htmlFor="datetime">Date and Time of Work</label>
-                <input
-                  type="datetime-local"
-                  id="datetime"
-                  name="datetime"
-                  value={formData.datetime}
-                  onChange={handleChange}
-                  required
-                />
-
-                <label htmlFor="location">Location of Work</label>
-                <input
-                  type="text"
-                  id="location"
-                  name="location"
-                  value={formData.location}
-                  onChange={handleChange}
-                  required
-                />
-                </div>
-                {/* ... Other form rows for the first column */}
-              </div>
-
-              <div className={styles['form-column']}>
-
-                <div className={styles['form-row']}>
-                <label htmlFor="details">Details</label>
-                  <textarea
-                    id="details"
-                    name="details"
-                    value={formData.details}
-                    onChange={handleChange}
-                    rows="12"
-                    cols="50"
-                    required
-                  ></textarea>
-               
-              
-                </div>
-                {/* ... Other form rows for the second column */}
-              </div>
-              
-            </div>
-
-            <div className={styles['form-button-container']}>
-              <div className={styles['button-wrapper']}>
-                <button onClick={onClose}>Close</button>
-                <input type="submit" value="Submit" />
-              </div>
-            </div>
-          </form>
-        </div>
+    <>
+      <div className="flex flex-wrap gap-3">
+        {sizes.map((size) => (
+          <Button key={size} onPress={() => handleOpen(size)}>Open {size}</Button>
+        ))}  
       </div>
-    </div>
+      <Modal 
+        size={size} 
+        isOpen={isOpen} 
+        onClose={onClose} 
+      >
+        <ModalContent>
+          {(onClose) => (
+            <>
+              <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+              <ModalBody>
+                <p> 
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Nullam pulvinar risus non risus hendrerit venenatis.
+                  Pellentesque sit amet hendrerit risus, sed porttitor quam.
+                </p>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Nullam pulvinar risus non risus hendrerit venenatis.
+                  Pellentesque sit amet hendrerit risus, sed porttitor quam.
+                </p>
+                <p>
+                  Magna exercitation reprehenderit magna aute tempor cupidatat consequat elit
+                  dolor adipisicing. Mollit dolor eiusmod sunt ex incididunt cillum quis. 
+                  Velit duis sit officia eiusmod Lorem aliqua enim laboris do dolor eiusmod. 
+                </p>
+              </ModalBody>
+              <ModalFooter>
+                <Button color="danger" variant="light" onPress={onClose}>
+                  Close
+                </Button>
+                <Button color="primary" onPress={onClose}>
+                  Action
+                </Button>
+              </ModalFooter>
+            </>
+          )}
+        </ModalContent>
+      </Modal>
+    </>
   );
-};
-
-export default Modal;
+}
