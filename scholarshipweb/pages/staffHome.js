@@ -34,10 +34,10 @@ export default function Home() {
       qualifications: 'Qualification information 1',
       contacts: 'Contact information 1',
       studentApplied: [
-        { info: 'Student Applied 1' },
+        { info: 'Anwar Rasheed' },
       ],
       studentProgress: [
-        { info: 'Student Progress 1' },
+        { info: 'Anwar Rasheed' },
       ],
     },
     {
@@ -57,7 +57,7 @@ export default function Home() {
       ],
     },
   ]);
-  
+
 
   const handleWorkClick = (workId) => {
     const selectedWork = works.find((work) => work.id === workId);
@@ -81,27 +81,27 @@ export default function Home() {
 
   return (
     <>
-        <StaffNavbar />
-        <div className={styles.line} />
-        <div className={styles['home-page']}>        
-          <div className={styles['works-list']}>
+      <StaffNavbar />
+      <div className={styles.line} />
+      <div className={styles['home-page']}>
+        <div className={styles['works-list']}>
           <div>
-              {works.map((work) => (
-              <div key={work.id} onClick={() => handleWorkClick(work.id) }className={styles['work-item']}>
-                <img src= {work.image} 
-                alt={`Image for ${work.title}`}
-                style={{width: '100px', height: 'auto'}} 
+            {works.map((work) => (
+              <div key={work.id} onClick={() => handleWorkClick(work.id)} className={styles['work-item']}>
+                <img src={work.image}
+                  alt={`Image for ${work.title}`}
+                  style={{ width: '100px', height: 'auto', borderRadius: '10px' }}
                 />
-              <div className={styles['work-details']}>
-                <div className={styles['work-title']}>{work.title}</div>
-                <div>{work.hours}</div>
-              </div>
+                <div className={styles['work-details']}>
+                  <div className={styles['work-title']}>{work.title}</div>
+                  <div>{work.hours}</div>
+                </div>
               </div>
             ))}
           </div>
-          </div>
-          <div className={styles['vertical-line']}></div>
-          <div className={styles['work-details']}>
+        </div>
+        <div className={styles['vertical-line']}></div>
+        <div className={styles['work-details']}>
           {selectedWork ? (
             <>
               <div className={styles['button-container']}>
@@ -117,7 +117,7 @@ export default function Home() {
               </div>
 
               <div className={styles['selected-image']}>
-                <img src={selectedWork.image} alt={`Image for ${selectedWork.title}`} style={{width: '100px', height: 'auto'}} />
+                <img src={selectedWork.image} alt={`Image for ${selectedWork.title}`} style={{ width: '100px', height: 'auto', borderRadius: '10px' }} />
               </div>
               <h2>{selectedWork.title}</h2>
               <p>{selectedWork.hours}</p>
@@ -134,7 +134,7 @@ export default function Home() {
                   >
                     Details
                   </h3>
-                  
+
                   <h3
                     className={selectedStudentApplied ? styles['active-title'] : ''}
                     onClick={() => {
@@ -154,35 +154,65 @@ export default function Home() {
                     Student Progress
                   </h3>
                 </div>
-                
+
 
                 {selectedContact ? (
-                  <div className={styles['first-info']}>
-                    <p>{selectedWork.studentProgress[0].info}</p>
+                  <div className={styles['list-info']}>
+                    <div>Name</div>
+                    <div>Attendance</div>
+                    <div>Action</div>
+                    <div className={styles['first-info']}> 
+                    <div className={styles['profile-box']}>
+                      <Image src="/profile_pic.png" className={styles['profilePicture']} alt="Profile Picture" width={50} height={50} />
+                      <p>{selectedWork.studentProgress[0].info}</p>
+                    </div>
+                      <select className={styles['select-list']} name='name' id='name'>
+                      <option>Present</option>
+                      <option>Absent</option>
+                      </select>
+                      
+                    
+                      <button className={styles['confirm-button']}>Confirm</button>
+                    </div>
                   </div>
+
+
                 ) : selectedStudentApplied ? (
+                  <div className={styles['list-info']}>
+                    <div>Name</div>
+                    <div>Major</div>
+                    <div>Response</div>
                   <div className={styles['qualification-info']}>
                     {/* Qualification content goes here */}
+                    <div className={styles['profile-box']}>
+                      <Image src="/profile_pic.png" className={styles['profilePicture']} alt="Profile Picture" width={50} height={50} />
                     <p>{selectedWork.studentApplied[0].info}</p>
+                  </div>
+                  </div>
                   </div>
                 ) : (
                   <div className={styles['details-info']}>
-                      <div className={styles['details-info']}>
-                        <h3>Description</h3>
-                        <p>{selectedWork.description}</p>
-                      </div>
+                    <div className={styles['details-info']}>
+                      <h3>Description</h3>
+                      <p>{selectedWork.description}</p>
+                    </div>
 
-                      <div className={styles['details-info']}>
-                        <h3>Qualification</h3>
-                        <p>{selectedWork.qualifications}</p>
-                      </div>
+                    <div className={styles['details-info']}>
+                      <h3>Qualification</h3>
+                      <p>{selectedWork.qualifications}</p>
+                    </div>
 
-                      <div className={styles['details-info']}>
-                        <h3>Contact</h3>
-                        <p>{selectedWork.contacts}</p>
-                      </div>
+                    <div className={styles['details-info']}>
+                      <h3>Contact</h3>
+                      <p>{selectedWork.contacts}</p>
+                    </div>
                   </div>
                 )}
+
+
+
+
+
               </div>
             </>
           ) : (
@@ -197,11 +227,11 @@ export default function Home() {
               <p>Select work for seeing more detail</p>
             </div>
           )}
-          
-          </div>
-          <modal/>
-        </div>   
+
+        </div>
+        <modal />
+      </div>
     </>
-    
+
   );
 }

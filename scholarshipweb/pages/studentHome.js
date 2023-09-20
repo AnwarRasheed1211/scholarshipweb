@@ -18,6 +18,7 @@ export default function Home() {
       image: '/workpost.png',
       title: 'Work 1',
       description: 'Work 1 Description',
+      hour: '120',
       details: 'Work plays a crucial role in the lives of individuals and societies, serving as a means of livelihood, personal fulfillment, and societal progress. In the modern context, work encompasses a wide range of activities and professions, from traditional manual labor to intricate knowledge-based tasks. The nature of work has evolved with advancements in technology and changes in societal values, leading to diverse career paths and flexible work arrangements. While work provides financial stability, it also contributes to personal growth, skill development, and a sense of accomplishment. The balance between work and personal life has become increasingly important, as organizations and individuals strive to foster well-being and productivity. In this dynamic landscape, fostering a positive work environment, promoting work-life balance, and embracing continuous learning have emerged as key factors in shaping the modern work experience.',
       qualifications: 'Qualification information 1',
       contacts: 'Contact information 1',
@@ -27,6 +28,7 @@ export default function Home() {
       image: '/workpost.png',
       title: 'Work 2',
       description: 'Work 2 Description',
+      hour: '120',
       details: 'Work 2 Detail',
       qualifications: 'Qualification information 2',
       contacts: 'Contact information 2',
@@ -65,6 +67,7 @@ export default function Home() {
               <div className={styles['work-details']}>
                 <div className={styles['work-title']}>{work.title}</div>
                 <div className={styles['work-description']}>{work.description}</div>
+                <div className={styles['work-scholarhour']}>{work.hour}</div>
               </div>
               </div>
             ))}
@@ -112,7 +115,13 @@ export default function Home() {
                   <h3>Contact</h3>
                   <p>{selectedWork.contacts}</p>
                 </div>
-              </div>
+             
+
+                <div className={styles['details-info']}>
+                    <h3>Contact</h3>
+                    <p>{selectedWork.contacts}</p>
+                 </div>
+                </div>
 
             </>
           ) : (

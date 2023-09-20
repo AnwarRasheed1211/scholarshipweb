@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import styles from '../styles/Create.module.css';
 import CreateNavBar from '/components/createNavbar';
+import { useRouter } from 'next/router';
 
 export default function Create() {
   const [formData, setFormData] = useState({

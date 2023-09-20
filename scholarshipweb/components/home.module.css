@@ -9,23 +9,23 @@
 }
 
 .text {
-color:black;
-display: flex;
-margin-top: 10px;
+  color: black;
+  display: flex;
+  margin-top: 10px;
 }
 
 .text2 {
-color:black;
-display: flex;
-margin-right: 10px;
+  color: black;
+  display: flex;
+  margin-right: 10px;
 }
 
 .imge {
-position: absolute;
-top: 0;
-left: 0;
-margin-left: 6rem;
-border-radius: 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 6rem;
+  border-radius: 25px;
 }
 
 .img {
@@ -33,60 +33,69 @@ border-radius: 25px;
 }
 
 .imge-container {
-margin-left: auto; /* Push the profile picture to the right side */
-display: flex;
-align-items: center;
-margin-right: 10px;
-border-radius: 25px;
+  margin-left: auto;
+  /* Push the profile picture to the right side */
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+  border-radius: 25px;
 
 }
 
 .text-container {
-display: flex;
-flex-direction: column;
-align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 
 .navBar {
-background-color: white;
-padding: 1rem;
+  background-color: white;
+  padding: 1rem;
 }
 
 .li {
-margin: 0 1rem;
+  margin: 0 1rem;
 }
 
 .ul {
-list-style: none;
-display: flex;
-justify-content: center;
+  list-style: none;
+  display: flex;
+  justify-content: center;
 }
 
 .logo {
-display: flex; /* Add this to make the logo and text align horizontally */
-align-items: center; /* Vertically center the logo and text within the nav bar */
-margin-right: 1rem; /* Add spacing between the logo/text and links */
+  display: flex;
+  /* Add this to make the logo and text align horizontally */
+  align-items: center;
+  /* Vertically center the logo and text within the nav bar */
+  margin-right: 1rem;
+  /* Add spacing between the logo/text and links */
 }
 
 .logoText {
-margin-left: 0.5rem; /* Add spacing between the logo and text */
-color: #121111; /* Customize the text color */
-font-size: 1.2rem; /* Customize the text size */
+  margin-left: 0.5rem;
+  /* Add spacing between the logo and text */
+  color: #121111;
+  /* Customize the text color */
+  font-size: 1.2rem;
+  /* Customize the text size */
 }
 
 .logoContainer {
-display: flex; /* Add this to make the logo and text appear on the same line */
-align-items: center; /* Vertically center the logo and text */
+  display: flex;
+  /* Add this to make the logo and text appear on the same line */
+  align-items: center;
+  /* Vertically center the logo and text */
 }
 
 .right-items {
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .work-title {
-flex: 1;
+  flex: 1;
 }
 
 .textwork {
@@ -101,18 +110,19 @@ flex: 1;
 }
 
 .works-list {
-color: #121111;
-display: inline;
- /* Take up remaining space */
-margin-right: 1rem; /* Add some spacing between the two sections */ 
-margin-left: 80px ;
-margin-top: 100px;
+  color: #121111;
+  display: inline;
+  /* Take up remaining space */
+  margin-right: 1rem;
+  /* Add some spacing between the two sections */
+  margin-left: 80px;
+  margin-top: 100px;
 
 
 }
 
 .vertical-line {
-  border-left:  1px solid gray;
+  border-left: 1px solid gray;
   height: 500px;
 }
 
@@ -120,178 +130,230 @@ margin-top: 100px;
 
 
 .work-item {
-  display: grid; /* Use flexbox for layout */
+  display: grid;
+  /* Use flexbox for layout */
   grid-template-columns: 13ch 30ch;
   grid-template-rows: 18ch;
-  align-items: center; /* Vertically align content */
+  align-items: center;
+  /* Vertically align content */
   grid-gap: 10px;
- 
-  
+
+
 }
 
 .work-item:focus {
   border: 1px solid blue;
   padding: auto;
 
-  
 }
 
 
 .work-content {
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .worksul {
-list-style: none;
-display: flex;
-justify-content: center;
+  list-style: none;
+  display: flex;
+  justify-content: center;
 }
 
 .work-details {
-  padding: 20px; /* Add spacing around the content */
+  padding: 20px;
+  /* Add spacing around the content */
   /* border: 1px solid #ccc;  Optional: Add a border for visual separation */
   color: black;
-  flex: 2; /* Take up twice the space of the works list */
+  flex: 2;
+  /* Take up twice the space of the works list */
   justify-content: center;
 
 
 }
 
 .no-works-message {
-flex: 1;
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-text-align: center;
-height: 60vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 60vh;
 }
 
 .no-works-image {
-width: 500px; /* Adjust the width as needed */
-height: auto;
-margin-bottom: 10px; /* Add spacing between image and message */
-border-radius: 25px;
+  width: 500px;
+  /* Adjust the width as needed */
+  height: auto;
+  margin-bottom: 10px;
+  /* Add spacing between image and message */
+  border-radius: 25px;
 }
 
 .line {
-border: 0;
-border-top: 1px solid #ccc;
-margin: 0;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 0;
 }
 
 /* Staff Home Page Buttons */
 .create-button {
-position: fixed;
-bottom: 20px;
-right: 20px;
-padding: 10px 10px;
-background-color: #3e4854; /* Change this color to your desired button color */
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px 10px;
+  background-color: #3e4854;
+  /* Change this color to your desired button color */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .work-details-header {
-display: flex;
-justify-content: space-between;
-align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .works-list .work-image {
-width: 100px; /* Adjust the width as needed */
-height: auto; /* Automatically adjust height to maintain aspect ratio */
-margin-right: 10px;
+  width: 100px;
+  /* Adjust the width as needed */
+  height: auto;
+  /* Automatically adjust height to maintain aspect ratio */
+  margin-right: 10px;
 }
 
 .apply-button {
-padding: 8px 32px;
-background-color: blue;
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-font-size:  80%;
+  padding: 8px 32px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 80%;
 }
 
 .close-button {
-padding: 6px 12px;
-background-color: transparent;
-color: blue;
-border: none;
-border-radius: 4px;
-cursor: pointer;
-font-size: 90%;
+  padding: 6px 12px;
+  background-color: transparent;
+  color: blue;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 90%;
 }
 
 .delete-button {
-padding: 6px 12px;
-background-color: #de1212;
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
+  padding: 6px 12px;
+  background-color: #de1212;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .button-container {
-display: flex;
-justify-content: space-between;
-align-items: center;
-margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
 .contact-section {
-margin-top: 20px;
-padding: 20px;
-border: 1px solid #ccc;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
 }
 
 .contact-list {
-display: flex;
-flex-direction: column;
-gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .contact-item {
-cursor: pointer;
-color: #3e4854;
+  cursor: pointer;
+  color: #3e4854;
 }
 
 .contact-info {
-margin-top: 10px;
+  margin-top: 10px;
 }
 
 .title-container {
-color: #121111;
-display: flex; /* Display the titles next to each other */
-gap: 10px; /* Add space between titles */
-margin-bottom: 10px; /* Add margin below the titles */
+  color: #121111;
+  display: flex;
+  /* Display the titles next to each other */
+  gap: 10px;
+  /* Add space between titles */
+  margin-bottom: 10px;
+  /* Add margin below the titles */
 }
 
 .qualification-info {
-margin-top: 20px;
-padding: 20px;
-border: 1px solid transparent;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid transparent;
 
 }
 
 .details-info {
-margin-top: 20px;
-padding: 20px;
-border: 1px solid #ccc;
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.profile-box {
+  display: flex;
 }
 
 .first-info {
-margin-top: 20px;
-padding: 20px;
-border: 1px solid #ccc;
+  
+  color: #121111;
+  display:contents; /* Display the titles next to each other */
+  margin-bottom: 10px; /* Add margin below the titles */
+  
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+
+}
+
+.list-info {
+  color: #121111;
+  display: grid; /* Display the titles next to each other */
+  grid-template-columns: auto auto auto;
+  gap: 20px; /* Add space between titles */
+  margin-bottom: 10px; /* Add margin below the titles */
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+
+}
+
+.select-list {
+  background-color:  white;
+  color: black;
+  border-radius: 10px;
+  align-items: center;
+
+}
+
+.confirm-button {
+  padding: 10px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 80%;
 }
 
 .active-title {
-cursor: pointer;
-text-decoration: underline; /* Add your preferred active title color */
+  cursor: pointer;
+  text-decoration: underline;
+  /* Add your preferred active title color */
 }
 
 
@@ -299,21 +361,21 @@ text-decoration: underline; /* Add your preferred active title color */
 /* Register Home Buttons */
 
 .accept-button {
-padding: 6px 12px;
-background-color: #1ac40e;
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
+  padding: 6px 12px;
+  background-color: #1ac40e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .reject-button {
-padding: 6px 12px;
-background-color: #de1212;
-color: white;
-border: none;
-border-radius: 4px;
-cursor: pointer;
+  padding: 6px 12px;
+  background-color: #de1212;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 /* Profile Components */
@@ -324,94 +386,101 @@ cursor: pointer;
   background-color: white;
   color: black;
   position: relative;
- /* margin: 10px 20px 15px 25px; /* top, right, bottom, left */
- /* left: 40px;
+  /* margin: 10px 20px 15px 25px; /* top, right, bottom, left */
+  /* left: 40px;
   top: 100px;
   z-index: 2;*/
 }
 
 .box {
   width: 50px;
-  
-  
+
+
 }
 
 .profileSection {
-border-radius: 25px;
-width: 350px;
-padding: 20px;
-border: 1px solid #ddd;
-background-color: white;
-position: relative;
-left: 50px;
-top: 120px;
+  border-radius: 25px;
+  width: 350px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  background-color: white;
+  position: relative;
+  left: 50px;
+  top: 120px;
 
 }
 
 .infoBox {
-  border: 1px solid #ccc; /* Add border or other styling as desired */
-  padding: 10px; /* Add padding as desired */
-  margin-top: 10px; /* Add margin as desired */
+  border: 1px solid #ccc;
+  /* Add border or other styling as desired */
+  padding: 10px;
+  /* Add padding as desired */
+  margin-top: 10px;
+  /* Add margin as desired */
 }
 
 .infoTitle {
-  font-weight: bold; /* Make the title bold or adjust styling as desired */
+  font-weight: bold;
+  /* Make the title bold or adjust styling as desired */
 }
 
 .detailSection {
-flex: 1;
-padding: 10px 5px 10px 40px;
-border: 1px solid transparent;
-background-color: #ffffff;
-position: relative;
+  flex: 1;
+  padding: 10px 5px 10px 40px;
+  border: 1px solid transparent;
+  background-color: #ffffff;
+  position: relative;
 }
 
 .profilePicture {
-margin-right: 10px;
-text-align: center; /* Center the image within its container */
+  margin-right: 10px;
+  text-align: center;
+  /* Center the image within its container */
 }
 
 
 .profilePictureContainer {
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 .profileContent {
-text-align: center;
-margin-top: 10px;
-font-weight: bold;
-color: #121111;
+  text-align: center;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #121111;
 }
 
 .topDetail {
-flex: 1;
-padding: 10px;
-border: 1px solid #ddd;
-background-color: white;
-margin-bottom: 10px;
-border-radius: 25px;
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: white;
+  margin-bottom: 10px;
+  border-radius: 25px;
 }
 
 .bottomDetail {
-flex: 1;
-padding: 10px;
-border: 1px solid #ddd;
-background-color: #ffffff;
-border-radius: 25px;
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  background-color: #ffffff;
+  border-radius: 25px;
 }
 
 .hourContent {
-text-align:left;
-margin-top: 10px;
-font-weight: bold;
-color: #121111;
+  text-align: left;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #121111;
 }
 
 .content-text {
-color: black /* Specify your desired text color here */;
+  color: black
+    /* Specify your desired text color here */
+  ;
 }
 
 
@@ -434,7 +503,7 @@ color: black /* Specify your desired text color here */;
   width: 150px;
   height: 150px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  
+
 }
 
 .progress-indicator {
@@ -458,7 +527,8 @@ color: black /* Specify your desired text color here */;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 1; /* Place above the progress track */
+  z-index: 1;
+  /* Place above the progress track */
 }
 
 .chip {
@@ -479,12 +549,14 @@ color: black /* Specify your desired text color here */;
   display: flex;
   align-items: center;
   margin-bottom: 10px;
-  
+
 }
 
 .work-image {
-  width: 80px; /* Adjust the width as needed */
-  height: 80px; /* Adjust the height as needed */
+  width: 80px;
+  /* Adjust the width as needed */
+  height: 80px;
+  /* Adjust the height as needed */
   margin-right: 10px;
 }
 
@@ -493,7 +565,7 @@ color: black /* Specify your desired text color here */;
   height: 100%;
   object-fit: cover;
   border-radius: 10px;
-  
+
 }
 
 .work-title {
@@ -510,7 +582,9 @@ color: black /* Specify your desired text color here */;
 }
 
 .work-status img {
-  width: 20px; /* Adjust the width as needed */
-  height: 20px; /* Adjust the height as needed */
+  width: 20px;
+  /* Adjust the width as needed */
+  height: 20px;
+  /* Adjust the height as needed */
   margin-right: 5px;
 }
