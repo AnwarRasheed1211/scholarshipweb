@@ -139,13 +139,13 @@ export default function Create() {
                           required
                         />
                         
-                        <button type="button" onClick={() => removeDateTime(index)}>
+                        <button className={['remove-box']} type="button" onClick={() => removeDateTime(index)}>
                           Remove
                         </button>
                       </div>
                     ))}
                     <div>
-                      <button type="button" onClick={addDateTime}>
+                      <button className={styles['datetime-box']} type="button" onClick={addDateTime}>
                         Add Date and Time
                       </button>
                     </div>

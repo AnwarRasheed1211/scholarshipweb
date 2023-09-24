@@ -137,8 +137,6 @@
   align-items: center;
   /* Vertically align content */
   grid-gap: 10px;
-
-
 }
 
 .work-item:focus {
@@ -234,6 +232,17 @@
   font-size: 80%;
 }
 
+
+.delete-button {
+  padding: 8px 32px;
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 80%;
+}
+
 .close-button {
   padding: 6px 12px;
   background-color: transparent;
@@ -282,19 +291,27 @@
 }
 
 .title-container {
+  font-size: 20px;
   color: #121111;
   display: flex;
   /* Display the titles next to each other */
-  gap: 10px;
+  gap: 100px;
   /* Add space between titles */
   margin-bottom: 10px;
   /* Add margin below the titles */
 }
 
 .qualification-info {
+  color: #121111;
+  display: contents;
+  /* Display the titles next to each other */
+  margin-bottom: 10px;
+  /* Add margin below the titles */
+
   margin-top: 20px;
   padding: 20px;
-  border: 1px solid transparent;
+  border: 1px solid;
+
 
 }
 
@@ -309,34 +326,43 @@
 }
 
 .first-info {
-  
+
   color: #121111;
-  display:contents; /* Display the titles next to each other */
-  margin-bottom: 10px; /* Add margin below the titles */
-  
+  display: contents;
+  /* Display the titles next to each other */
+  margin-bottom: 10px;
+  /* Add margin below the titles */
+
   margin-top: 20px;
   padding: 20px;
-  border: 1px solid #ccc;
+  border: 1px solid transparent;
 
 }
 
 .list-info {
   color: #121111;
-  display: grid; /* Display the titles next to each other */
+  display: grid;
+  /* Display the titles next to each other */
   grid-template-columns: auto auto auto;
-  gap: 20px; /* Add space between titles */
-  margin-bottom: 10px; /* Add margin below the titles */
+  gap: 20px;
+  /* Add space between titles */
+  margin-bottom: 10px;
+  /* Add margin below the titles */
   margin-top: 20px;
   padding: 20px;
   border: 1px solid #ccc;
+  text-align: center;
 
 }
 
 .select-list {
-  background-color:  white;
+  background-color: white;
   color: black;
   border-radius: 10px;
-  align-items: center;
+  text-align: center;
+  display: inline-block;
+  padding: 15px 32px;
+  cursor: pointer;
 
 }
 
@@ -354,6 +380,12 @@
   cursor: pointer;
   text-decoration: underline;
   /* Add your preferred active title color */
+}
+
+
+.list-status {
+  gap: 15px;
+  
 }
 
 
@@ -436,6 +468,13 @@
   margin-right: 10px;
   text-align: center;
   /* Center the image within its container */
+}
+
+.profile-info {
+  display: flex;
+  align-items: center;
+  /* Center vertically /
+  / You can use justify-content to control horizontal alignment */
 }
 
 

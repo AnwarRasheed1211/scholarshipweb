@@ -5,6 +5,11 @@ import React, { useState } from 'react';
 import CreateForm from '../components/Creatework';
 
 
+
+
+
+
+
 export default function Home() {
 
   const [isCreateFormVisible, setCreateFormVisible] = useState(false);
@@ -35,6 +40,8 @@ export default function Home() {
     },
   ];
 
+  
+
   const handleWorkClick = (workId) => {
     const selectedWork = works.find((work) => work.id === workId);
     setSelectedWork(selectedWork);
@@ -44,51 +51,51 @@ export default function Home() {
     setSelectedWork(null); // Reset selectedWork when the Close button is clicked
     setCreateFormVisible(false); // Hide create form if it's open
   };
-  
+
   const toggleCreateForm = () => {
     setCreateFormVisible((prevVisible) => !prevVisible);
   };
 
   return (
     <>
-        <div className={styles.line} />
-        <h1 className={styles['textwork']}>
-          WORK
-          </h1>
-        <div className={styles['home-page']}>
-          <div className={styles['works-list']}>
-           <div>
-              {works.map((work) => (
-              <div key={work.id} onClick={() => handleWorkClick(work.id) }className={styles['work-item']} tabIndex="1">
-                <img src= {work.image} 
-                alt={`Image for ${work.title}`}
-                style={{width: '115px', height: 'auto',  borderRadius: '25px'}} 
+      <div className={styles.line} />
+      <h1 className={styles['textwork']}>
+        WORK
+      </h1>
+      <div className={styles['home-page']}>
+        <div className={styles['works-list']}>
+          <div>
+            {works.map((work) => (
+              <div key={work.id} onClick={() => handleWorkClick(work.id)} className={styles['work-item']} tabIndex="1">
+                <img src={work.image}
+                  alt={`Image for ${work.title}`}
+                  style={{ width: '115px', height: 'auto', borderRadius: '25px' }}
                 />
-              <div className={styles['work-details']}>
-                <div className={styles['work-title']}>{work.title}</div>
-                <div className={styles['work-description']}>{work.description}</div>
-                <div className={styles['work-scholarhour']}>{work.hour}</div>
-              </div>
+                <div className={styles['work-details']}>
+                  <div className={styles['work-title']}>{work.title}</div>
+                  <div className={styles['work-description']}>{work.description}</div>
+                  <div className={styles['work-scholarhour']}>{work.hour}</div>
+                </div>
               </div>
             ))}
           </div>
-          </div>
-          <div className={styles['vertical-line']}></div>
+        </div>
+        <div className={styles['vertical-line']}></div>
 
-          <div className={styles['work-details']}>
+        <div className={styles['work-details']}>
           {selectedWork ? (
-           <>
+            <>
               <div className={styles['button-container']}>
                 <button className={styles['apply-button']} onClick={toggleCreateForm}>
-                  Apply 
+                  Apply
                 </button>
                 <button className={styles['close-button']} onClick={handleCloseClick}>
                   Closed
                 </button>
               </div>
-              
+
               <div className={styles['selected-image']}>
-                <img src={selectedWork.image} alt={`Image for ${selectedWork.title}`} style={{width: '115px', height: 'auto', borderRadius: '25px'}} />
+                <img src={selectedWork.image} alt={`Image for ${selectedWork.title}`} style={{ width: '115px', height: 'auto', borderRadius: '25px' }} />
               </div>
               <h2>{selectedWork.title}</h2>
               <p>{selectedWork.description}</p>
@@ -115,13 +122,13 @@ export default function Home() {
                   <h3>Contact</h3>
                   <p>{selectedWork.contacts}</p>
                 </div>
-             
+
 
                 <div className={styles['details-info']}>
-                    <h3>Contact</h3>
-                    <p>{selectedWork.contacts}</p>
-                 </div>
+                  <h3>Contact</h3>
+                  <p>{selectedWork.contacts}</p>
                 </div>
+              </div>
 
             </>
           ) : (
@@ -137,8 +144,8 @@ export default function Home() {
             </div>
           )}
         </div>
-        </div>   
+      </div>
     </>
-    
+
   );
 }

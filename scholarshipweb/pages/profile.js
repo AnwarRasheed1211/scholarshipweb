@@ -59,7 +59,6 @@ export default function Profile() {
           </div>
           <div className={styles['profileContent']}>
             <div>Anwar Rasheed</div>
-            <div>6228105</div>
             <div className={styles['infoBox']}>
               <div className={styles['infoTitle']}>Faculty</div>
             </div>

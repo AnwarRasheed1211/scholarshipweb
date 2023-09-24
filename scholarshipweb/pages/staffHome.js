@@ -5,7 +5,15 @@ import { useRouter } from 'next/router';
 import StaffNavbar from '/components/StaffNavbar';
 import modal from '../components/Modal'
 
+import {columns, users} from '../DB/data'
+import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Chip, Tooltip, getKeyValue, user, avatar } from "@nextui-org/react";
 
+
+const statusColorMap = {
+  accpet: "Accepted",
+  pending: "pending",
+  reject: "rejected",
+};
 
 export default function Home() {
 
@@ -59,6 +67,28 @@ export default function Home() {
   ]);
 
 
+  const renderCell = React.useCallback((users, columnKey) => {
+    const cellValue = users[columnKey];
+
+    switch (columnKey) {
+      case "name":
+        return (
+          <User
+          description={user.email}
+          name={cellValue}
+          ></User>
+        )
+      case "status":
+        return <div className={styles['work-description']}>{cellValue}</div>;
+      case "hour":
+        return <div className={styles['work-scholarhour']}>{cellValue}</div>;
+      default:
+        return cellValue;
+    }
+  }, []);
+
+
+
   const handleWorkClick = (workId) => {
     const selectedWork = works.find((work) => work.id === workId);
     setSelectedWork(selectedWork);
@@ -87,7 +117,7 @@ export default function Home() {
         <div className={styles['works-list']}>
           <div>
             {works.map((work) => (
-              <div key={work.id} onClick={() => handleWorkClick(work.id)} className={styles['work-item']}>
+              <div key={work.id} onClick={() => handleWorkClick(work.id)} className={styles['work-item']} tabIndex="1">
                 <img src={work.image}
                   alt={`Image for ${work.title}`}
                   style={{ width: '100px', height: 'auto', borderRadius: '10px' }}
@@ -95,6 +125,7 @@ export default function Home() {
                 <div className={styles['work-details']}>
                   <div className={styles['work-title']}>{work.title}</div>
                   <div>{work.hours}</div>
+                  <div></div>
                 </div>
               </div>
             ))}
@@ -105,9 +136,6 @@ export default function Home() {
           {selectedWork ? (
             <>
               <div className={styles['button-container']}>
-                <button className={styles['apply-button']} onClick={toggleCreateForm}>
-                  Edit
-                </button>
                 <button className={styles['delete-button']} onClick={() => handleDelete(selectedWork.id)}>
                   Delete
                 </button>
@@ -161,17 +189,19 @@ export default function Home() {
                     <div>Name</div>
                     <div>Attendance</div>
                     <div>Action</div>
-                    <div className={styles['first-info']}> 
-                    <div className={styles['profile-box']}>
-                      <Image src="/profile_pic.png" className={styles['profilePicture']} alt="Profile Picture" width={50} height={50} />
-                      <p>{selectedWork.studentProgress[0].info}</p>
-                    </div>
+                    <div className={styles['first-info']}>
+                      <div className={styles['profile-box']}>
+                        <div className={styles['profile-info']}>
+                          <Image src="/profile_pic.png" className={styles['profilePicture']} alt="Profile Picture" width={50} height={50} />
+                          <p>{selectedWork.studentProgress[0].info}</p>
+                        </div>
+                      </div>
                       <select className={styles['select-list']} name='name' id='name'>
-                      <option>Present</option>
-                      <option>Absent</option>
+                        <option>Present</option>
+                        <option>Absent</option>
                       </select>
-                      
-                    
+
+
                       <button className={styles['confirm-button']}>Confirm</button>
                     </div>
                   </div>
@@ -182,13 +212,16 @@ export default function Home() {
                     <div>Name</div>
                     <div>Major</div>
                     <div>Response</div>
-                  <div className={styles['qualification-info']}>
-                    {/* Qualification content goes here */}
-                    <div className={styles['profile-box']}>
-                      <Image src="/profile_pic.png" className={styles['profilePicture']} alt="Profile Picture" width={50} height={50} />
-                    <p>{selectedWork.studentApplied[0].info}</p>
-                  </div>
-                  </div>
+                    <div className={styles['qualification-info']}>
+                      {/* Qualification content goes here */}
+                      <div className={styles['profile-box']}>
+                        <div className={styles['profile-info']}>
+                          <Image src="/profile_pic.png" className={styles['profilePicture']} alt="Profile Picture" width={50} height={50} />
+                          <p>{selectedWork.studentProgress[0].info}</p>
+                        </div>
+                      </div>
+                      <div></div>
+                    </div>
                   </div>
                 ) : (
                   <div className={styles['details-info']}>
@@ -216,20 +249,24 @@ export default function Home() {
               </div>
             </>
           ) : (
-            <div className={styles['no-works-message']}>
-              <img
-                src="/workposter.png"
-                alt="No Works"
-                className={styles['no-works-image']
-                }
-              />
-              <h3>There are scholarship works</h3>
-              <p>Select work for seeing more detail</p>
-            </div>
+            <Table aria-label="Example table with custom cells">
+              <TableHeader className={styles['list-status']} columns={columns}>
+                {(column) => (
+                  <TableColumn key={column.uid} align={column.uid === "actions" ? "center" : "start"}>
+                    {column.name}
+                  </TableColumn>
+                )}
+              </TableHeader>
+              <TableBody items={users}>
+                {(item) => (
+                  <TableRow key={item.id}>
+                    {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
           )}
-
-        </div>
-        <modal />
+        </div>   
       </div>
     </>
 
