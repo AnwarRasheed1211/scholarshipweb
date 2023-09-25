@@ -115,7 +115,7 @@ color: black /* Specify your desired text color here */;
   width: 160px;
   height: 160px;
   border: none;
-  background: linear-gradient(to bottom right, white, white);
+  background: linear-gradient(to bottom right, transparent, transparent);
   position: relative;
 }
 

@@ -10,6 +10,7 @@ import CreateForm from '../components/Creatework';
 
 
 
+
 export default function Home() {
 
   const [isCreateFormVisible, setCreateFormVisible] = useState(false);
@@ -132,14 +133,14 @@ export default function Home() {
 
             </>
           ) : (
-            <div className={styles['no-works-message']}>
+            <div className={styles['no-works-message']} >
               <img
                 src="/workposter.png"
                 alt="No Works"
                 className={styles['no-works-image']
                 }
               />
-              <h3>There are scholarship works</h3>
+              <h3 >There are scholarship works</h3>
               <p>Select work for seeing more detail</p>
             </div>
           )}

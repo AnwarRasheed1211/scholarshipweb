@@ -9,13 +9,13 @@
 }
 
 .text {
-  color: black;
+  color: white;
   display: flex;
-  margin-top: 10px;
+  
 }
 
 .text2 {
-  color: black;
+  color: white;
   display: flex;
   margin-right: 10px;
 }
@@ -50,8 +50,8 @@
 
 
 .navBar {
-  background-color: white;
-  padding: 1rem;
+  background-color: #EF0107;
+  padding: 1px;
 }
 
 .li {
@@ -76,9 +76,9 @@
 .logoText {
   margin-left: 0.5rem;
   /* Add spacing between the logo and text */
-  color: #121111;
+  color: white;
   /* Customize the text color */
-  font-size: 1.2rem;
+  font-size: 25px;
   /* Customize the text size */
 }
 
@@ -123,7 +123,21 @@
 
 .vertical-line {
   border-left: 1px solid gray;
-  height: 500px;
+  height: 100vh; /* Use 100vh to represent 100% of the viewport height */
+}
+
+/* Modal.module.css */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 
@@ -140,7 +154,7 @@
 }
 
 .work-item:focus {
-  border: 1px solid blue;
+  border-right: thick solid blue;
   padding: auto;
 
 }
@@ -169,24 +183,66 @@
 
 }
 
+.approve-title {
+  font-size: 30px;
+  text-align: center;
+  display: flex; /* Use flexbox for vertical alignment */
+  justify-content: center; /* Center horizontally */
+  align-items: flex-start; /* Align text to the top vertically */
+}
+
+/* Center the content horizontally and vertically */
 .no-works-message {
-  flex: 1;
+  font-size: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  height: 60vh;
+  height: 100vh; /* Optionally, set a full viewport height for vertical centering */
 }
 
 .no-works-image {
-  width: 500px;
-  /* Adjust the width as needed */
-  height: auto;
-  margin-bottom: 10px;
-  /* Add spacing between image and message */
-  border-radius: 25px;
+  width: 800px; /* Adjust the width as needed */
+  height: 500px; /* Adjust the height as needed */
+  border-radius: 50%; /* Make the image a circle */
+  margin-bottom: 20px; /* Add margin to space it from the text */
 }
+
+
+/* Table styling */
+/* Add this CSS to your styles */
+.custom-table {
+  border-collapse: collapse; /* Collapse the table borders */
+  width: 700%;
+  text-align: center;
+  align-items: center;
+}
+
+.table-header {
+  background-color: #f2f2f2;
+  border-bottom: 2px solid #ddd; /* Add bottom border to header */
+}
+
+.table-column {
+  padding: 10px;
+  text-align: left;
+  border-right: 1px solid #ddd; /* Add right border to columns */
+}
+
+.table-cell {
+  padding: 20px;
+  width: auto;
+  align-items: center;
+  text-align: center;
+  /*border-right: 1px solid #ddd; /* Add right border to cells */
+  /*border-bottom: 1px solid #ddd; /* Add bottom border to cells */
+}
+
+/* Style the last column differently to avoid the right border */
+.table-cell:last-child {
+  border-right: none;
+}
+
 
 .line {
   border: 0;
@@ -517,17 +573,15 @@
 }
 
 .content-text {
-  color: black
-    /* Specify your desired text color here */
-  ;
+  color: black /* Specify your desired text color here */;
 }
 
 
 .circular-progress-card {
-  width: 160px;
+  width: 200px;
   height: 160px;
   border: none;
-  background: linear-gradient(to bottom right, white, white);
+  background: transparent;
   position: relative;
 }
 

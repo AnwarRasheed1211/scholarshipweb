@@ -99,10 +99,9 @@
   display: inline-block;
   border-radius: 25px;
   padding: 200px 100px;
-  border: 1px solid black;
+  border: 1px dashed black;
   background-color: white;
   color: black;
-  border: 1px solid dotted;
   margin: auto;
 }
 

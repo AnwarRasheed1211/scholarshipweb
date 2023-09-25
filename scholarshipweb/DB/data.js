@@ -1,58 +1,43 @@
 import React from "react";
 
-const columns = [
-  {name: "NAME", uid: "name"},
 
-  {name: "STATUS", uid: "status"},
-];
-
-const users = [
+const rows = [
   {
-    id: 1,
-    name: "Tony Reichert",
-    status: "accept",
-   
+    key: "1",
+    title: "Tony Reichert",
+    role: "CEO",
+    status: "Accept",
   },
   {
-    id: 2,
-    name: "Zoey Lang",
+    key: "2",
+    title: "Zoey Lang",
     role: "Technical Lead",
-    team: "Development",
-    status: "paused",
-    age: "25",
-    avatar: "https://i.pravatar.cc/150?u=a042581f4e29026704d",
-    email: "zoey.lang@example.com",
+    status: "Pending",
   },
   {
-    id: 3,
-    name: "Jane Fisher",
+    key: "3",
+    title: "Jane Fisher",
     role: "Senior Developer",
-    team: "Development",
-    status: "active",
-    age: "22",
-    avatar: "https://i.pravatar.cc/150?u=a04258114e29026702d",
-    email: "jane.fisher@example.com",
+    status: "Accepted",
   },
   {
-    id: 4,
-    name: "William Howard",
+    key: "4",
+    title: "William Howard",
     role: "Community Manager",
-    team: "Marketing",
-    status: "vacation",
-    age: "28",
-    avatar: "https://i.pravatar.cc/150?u=a048581f4e29026701d",
-    email: "william.howard@example.com",
-  },
-  {
-    id: 5,
-    name: "Kristen Copper",
-    role: "Sales Manager",
-    team: "Sales",
-    status: "active",
-    age: "24",
-    avatar: "https://i.pravatar.cc/150?u=a092581d4ef9026700d",
-    email: "kristen.cooper@example.com",
+    status: "Rejected",
   },
 ];
 
-export {columns, users};
+const columns = [
+  {
+    key: "title",
+    label: "TITLE",
+  },
+  
+  {
+    key: "status",
+    label: "STATUS",
+  },
+];
+
+export {columns, rows};

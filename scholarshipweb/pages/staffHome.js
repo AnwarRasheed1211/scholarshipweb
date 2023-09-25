@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import StaffNavbar from '/components/StaffNavbar';
 import modal from '../components/Modal'
 
-import {columns, users} from '../DB/data'
+import {columns, rows} from '../DB/data'
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Chip, Tooltip, getKeyValue, user, avatar } from "@nextui-org/react";
 
 
@@ -113,6 +113,9 @@ export default function Home() {
     <>
       <StaffNavbar />
       <div className={styles.line} />
+      <h1 className={styles['textwork']}>
+          WORK
+          </h1>
       <div className={styles['home-page']}>
         <div className={styles['works-list']}>
           <div>
@@ -249,22 +252,49 @@ export default function Home() {
               </div>
             </>
           ) : (
-            <Table aria-label="Example table with custom cells">
-              <TableHeader className={styles['list-status']} columns={columns}>
+            <div className={`${styles['no-works-message']} ${selectedWork ? styles['hidden'] : ''}`}>
+              <div className={styles['approve-title']}>Approval Status List</div>
+            <Table aria-label="Example table with dynamic content" className={styles["custom-table"]}>
+              <TableHeader columns={columns}>
                 {(column) => (
-                  <TableColumn key={column.uid} align={column.uid === "actions" ? "center" : "start"}>
-                    {column.name}
+                  <TableColumn
+                    key={column.key}
+                    width={
+                      column.key === "name"
+                        ? "20%"
+                        : column.key === "role"
+                        ? "100%"
+                        : "20%"
+                    }
+                    className={`${styles["table-column"]} ${styles["table-header"]}`} // Add a class for header styling
+                  >
+                    {column.label}
                   </TableColumn>
                 )}
               </TableHeader>
-              <TableBody items={users}>
+              <TableBody items={rows} className={styles["table-body"]}>
                 {(item) => (
-                  <TableRow key={item.id}>
-                    {(columnKey) => <TableCell>{renderCell(item, columnKey)}</TableCell>}
+                  <TableRow key={item.key}>
+                    {(columnKey) => (
+                      <TableCell
+                        width={
+                          columnKey === "name"
+                            ? "40%"
+                            : columnKey === "role"
+                            ? "20%"
+                            : "20%"
+                        }
+                        className={styles["table-cell"]}
+                      >
+                        {getKeyValue(item, columnKey)}
+                      </TableCell>
+                    )}
                   </TableRow>
                 )}
               </TableBody>
             </Table>
+
+          </div>
           )}
         </div>   
       </div>
