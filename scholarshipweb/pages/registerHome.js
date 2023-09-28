@@ -192,7 +192,7 @@ export default function Register() {
               </div>
             </>
            ) : (
-            <div className={`${styles['no-works-message']} ${selectedWork ? styles['hidden'] : ''}`}>
+            <div className={`${styles['no-works-messageS']} ${selectedWork ? styles['hidden'] : ''}`}>
               <div className={styles['approve-title']}>Approval Status List</div>
             <Table aria-label="Example table with dynamic content" className={styles["custom-table"]}>
               <TableHeader columns={columns}>

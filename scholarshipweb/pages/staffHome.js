@@ -5,7 +5,11 @@ import { useRouter } from 'next/router';
 import StaffNavbar from '/components/StaffNavbar';
 import modal from '../components/Modal'
 
-import {columns, rows} from '../DB/data'
+import StudentModal from '../components/ModalStudent';
+import DeleteModal from '../components/DeleteModal'; // Import your DeleteModal component
+
+
+import { columns, rows } from '../DB/data'
 import { Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, User, Chip, Tooltip, getKeyValue, user, avatar } from "@nextui-org/react";
 
 
@@ -15,6 +19,14 @@ const statusColorMap = {
   reject: "rejected",
 };
 
+const studentData = {
+  id: 1,
+  name: 'John Doe',
+  profile: 'Student Profile 1',
+  username: 'johndoe123',
+  email: 'johndoe@example.com',
+};
+
 export default function Home() {
 
   const [isCreateFormVisible, setCreateFormVisible] = useState(false);
@@ -22,6 +34,12 @@ export default function Home() {
   const [selectedContact, setSelectedContact] = useState(null);
   const [selectedStudentApplied, setSelectedStudentApplied] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false); // State for the delete modal
+
+  const [selectedStudent, setSelectedStudent] = useState(null); // Add this line to define the selectedStudent state
+
+  const [isStudentModalOpen, setStudentModalOpen] = useState(false);
+
 
   const openModal = () => {
     setIsModalOpen(true);
@@ -29,6 +47,17 @@ export default function Home() {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+
+
+  const openDeleteModal = () => {
+    setIsDeleteModalOpen(true);
+  };
+
+  // Function to close the delete modal
+  const closeDeleteModal = () => {
+    setIsDeleteModalOpen(false);
   };
 
   const [works, setWorks] = useState([
@@ -66,6 +95,16 @@ export default function Home() {
     },
   ]);
 
+  const openStudentModal = (student) => {
+    setSelectedStudent(student);
+    setStudentModalOpen(true);
+  };
+
+  const closeStudentModal = () => {
+    setSelectedStudent(null);
+    setStudentModalOpen(false);
+  };
+
 
   const renderCell = React.useCallback((users, columnKey) => {
     const cellValue = users[columnKey];
@@ -74,8 +113,8 @@ export default function Home() {
       case "name":
         return (
           <User
-          description={user.email}
-          name={cellValue}
+            description={user.email}
+            name={cellValue}
           ></User>
         )
       case "status":
@@ -109,13 +148,21 @@ export default function Home() {
     setCreateFormVisible((prevVisible) => !prevVisible);
   };
 
+
+  const handleDeleteConfirmed = () => {
+    // Implement your deletion logic here
+    // For example, you can remove the selectedWork or perform an API request
+    console.log('Deleted item:', selectedWork);
+    setIsDeleteModalOpen(false); // Close the delete modal after deletion
+  };
+
   return (
     <>
       <StaffNavbar />
       <div className={styles.line} />
       <h1 className={styles['textwork']}>
-          WORK
-          </h1>
+        WORK
+      </h1>
       <div className={styles['home-page']}>
         <div className={styles['works-list']}>
           <div>
@@ -139,9 +186,15 @@ export default function Home() {
           {selectedWork ? (
             <>
               <div className={styles['button-container']}>
-                <button className={styles['delete-button']} onClick={() => handleDelete(selectedWork.id)}>
+                <button className={styles['delete-button']} onClick={openDeleteModal}>
                   Delete
                 </button>
+                <DeleteModal
+                  isOpen={isDeleteModalOpen}
+                  onCancel={closeDeleteModal}
+                  onDelete={handleDeleteConfirmed}
+                />
+
                 <button className={styles['close-button']} onClick={handleCloseClick}>
                   Close
                 </button>
@@ -196,7 +249,17 @@ export default function Home() {
                       <div className={styles['profile-box']}>
                         <div className={styles['profile-info']}>
                           <Image src="/profile_pic.png" className={styles['profilePicture']} alt="Profile Picture" width={50} height={50} />
-                          <p>{selectedWork.studentProgress[0].info}</p>
+                          <p
+                            onClick={openStudentModal}
+                            style={{ cursor: 'pointer', color: 'blue' }}
+                          >
+                            {selectedWork.studentProgress[0].info}
+                          </p>
+                          <StudentModal
+                            isOpen={isStudentModalOpen}
+                            onClose={closeStudentModal}
+                            student={studentData}
+                          />
                         </div>
                       </div>
                       <select className={styles['select-list']} name='name' id='name'>
@@ -213,16 +276,31 @@ export default function Home() {
                 ) : selectedStudentApplied ? (
                   <div className={styles['list-info']}>
                     <div>Name</div>
-                    <div>Major</div>
-                    <div>Response</div>
+                    <div>Reponse</div>
+                    <div>Action</div>
                     <div className={styles['qualification-info']}>
                       {/* Qualification content goes here */}
                       <div className={styles['profile-box']}>
                         <div className={styles['profile-info']}>
                           <Image src="/profile_pic.png" className={styles['profilePicture']} alt="Profile Picture" width={50} height={50} />
-                          <p>{selectedWork.studentProgress[0].info}</p>
+                          <p
+                            onClick={() => openStudentModal(selectedWork.studentProgress[0])}
+                            style={{ cursor: 'pointer', color: 'blue' }}
+                          >
+                            {selectedWork.studentProgress[0].info}
+                          </p>
+                          <StudentModal
+                            isOpen={isStudentModalOpen}
+                            onClose={closeStudentModal}
+                            student={selectedWork.studentProgress[0]} // Pass the student object here
+                          />
                         </div>
                       </div>
+                      <select className={styles['select-list']} name='name' id='name'>
+                            <option>Accept</option>
+                            <option>Reject</option>
+                          </select>
+                          <button className={styles['confirm-button']}>Confirm</button>
                       <div></div>
                     </div>
                   </div>
@@ -252,51 +330,51 @@ export default function Home() {
               </div>
             </>
           ) : (
-            <div className={`${styles['no-works-message']} ${selectedWork ? styles['hidden'] : ''}`}>
+            <div className={`${styles['no-works-message-s']} ${selectedWork ? styles['hidden'] : ''}`}>
               <div className={styles['approve-title']}>Approval Status List</div>
-            <Table aria-label="Example table with dynamic content" className={styles["custom-table"]}>
-              <TableHeader columns={columns}>
-                {(column) => (
-                  <TableColumn
-                    key={column.key}
-                    width={
-                      column.key === "name"
-                        ? "20%"
-                        : column.key === "role"
-                        ? "100%"
-                        : "20%"
-                    }
-                    className={`${styles["table-column"]} ${styles["table-header"]}`} // Add a class for header styling
-                  >
-                    {column.label}
-                  </TableColumn>
-                )}
-              </TableHeader>
-              <TableBody items={rows} className={styles["table-body"]}>
-                {(item) => (
-                  <TableRow key={item.key}>
-                    {(columnKey) => (
-                      <TableCell
-                        width={
-                          columnKey === "name"
-                            ? "40%"
-                            : columnKey === "role"
-                            ? "20%"
+              <Table aria-label="Example table with dynamic content" className={styles["custom-table"]}>
+                <TableHeader columns={columns}>
+                  {(column) => (
+                    <TableColumn
+                      key={column.key}
+                      width={
+                        column.key === "name"
+                          ? "20%"
+                          : column.key === "role"
+                            ? "100%"
                             : "20%"
-                        }
-                        className={styles["table-cell"]}
-                      >
-                        {getKeyValue(item, columnKey)}
-                      </TableCell>
-                    )}
-                  </TableRow>
-                )}
-              </TableBody>
-            </Table>
+                      }
+                      className={`${styles["table-column"]} ${styles["table-header"]}`} // Add a class for header styling
+                    >
+                      {column.label}
+                    </TableColumn>
+                  )}
+                </TableHeader>
+                <TableBody items={rows} className={styles["table-body"]}>
+                  {(item) => (
+                    <TableRow key={item.key}>
+                      {(columnKey) => (
+                        <TableCell
+                          width={
+                            columnKey === "name"
+                              ? "40%"
+                              : columnKey === "role"
+                                ? "20%"
+                                : "20%"
+                          }
+                          className={styles["table-cell"]}
+                        >
+                          {getKeyValue(item, columnKey)}
+                        </TableCell>
+                      )}
+                    </TableRow>
+                  )}
+                </TableBody>
+              </Table>
 
-          </div>
+            </div>
           )}
-        </div>   
+        </div>
       </div>
     </>
 

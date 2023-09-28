@@ -29,7 +29,6 @@ export default function Profile() {
       ],
       history: [
         { status: 'Completed', icon: '/completed.png' },
-        { status: 'In Progress', icon: '/in_progress.png' },
         { status: 'Incompleted', icon: '/not_applied.png' },
         // Add more work entries with images and status
       ],
@@ -58,9 +57,9 @@ export default function Profile() {
             <Image src="/profile_pic.png" className={styles['profilePicture']} alt="Profile Picture" width={100} height={100} />
           </div>
           <div className={styles['profileContent']}>
-            <div>Anwar Rasheed</div>
+            
             <div className={styles['infoBox']}>
-              <div className={styles['infoTitle']}>Faculty</div>
+              <div className={styles['infoTitle']}>Anwar Rasheed</div>
             </div>
             <div className={styles['infoBox']}>
               <div className={styles['infoTitle']}>Email</div>
