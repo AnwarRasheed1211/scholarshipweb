@@ -3,7 +3,7 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import StaffNavbar from '/components/StaffNavbar';
-import modal from '../components/Modal'
+
 
 import StudentModal from '../components/ModalStudent';
 import DeleteModal from '../components/DeleteModal'; // Import your DeleteModal component

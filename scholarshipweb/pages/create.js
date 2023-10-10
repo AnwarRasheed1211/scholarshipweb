@@ -1,26 +1,39 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
+import axios from 'axios'; // Import Axios for making HTTP requests
 import styles from '../styles/Create.module.css';
 import CreateNavBar from '/components/createNavbar';
 import { useRouter } from 'next/router';
 
 export default function Create() {
+
   const [formData, setFormData] = useState({
     picture: null,
     title: '',
-    hours: '',
-    students: '',
-    datetime: [{ start: '', end: '' }], // Initialize with one empty date-time field
+    datetimeStartDate: '',
+    datetimeStartTime: '',
+    datetimeEndDate: '',
+    datetimeEndTime: '',
+    scholarshipHours: '',
     location: '',
     details: '',
     qualification: '',
     contacts: '',
   });
+  
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Perform form submission logic here, e.g., sending data to a server.
-    console.log(formData);
+  
+    try {
+      // Send a POST request to your Next.js API route
+      const response = await axios.post('/api/scholarshipWork', formData);
+  
+      // Optionally, you can handle success or display a message to the user
+      console.log('Response from server:', response.data);
+    } catch (error) {
+      console.error('Error posting data:', error);
+    }
   };
 
   const handleChange = (event) => {
@@ -38,31 +51,6 @@ export default function Create() {
     setFormData((prevData) => ({
       ...prevData,
       picture: file,
-    }));
-  };
-
-  const addDateTime = () => {
-    setFormData((prevData) => ({
-      ...prevData,
-      datetime: [...prevData.datetime, { start: '', end: '' }], // Add an empty date-time field
-    }));
-  };
-
-  const removeDateTime = (index) => {
-    const newDateTime = [...formData.datetime];
-    newDateTime.splice(index, 1); // Remove the date-time field at the specified index
-    setFormData((prevData) => ({
-      ...prevData,
-      datetime: newDateTime,
-    }));
-  };
-
-  const handleDateTimeChange = (index, field, value) => {
-    const newDateTime = [...formData.datetime];
-    newDateTime[index][field] = value;
-    setFormData((prevData) => ({
-      ...prevData,
-      datetime: newDateTime,
     }));
   };
 
@@ -87,14 +75,10 @@ export default function Create() {
             </div>
           </div>
 
-
           <div className={styles['float-child']}>
             <div className={styles['form-container']}>
               <form onSubmit={handleSubmit} className={styles['create-form']}>
                 <div className={styles['form-column']}>
-
-
-
                   <div className={styles['container-form']}>
                     <label htmlFor="title">Title</label>
                     <input
@@ -106,49 +90,56 @@ export default function Create() {
                       required
                     />
 
-                    <label htmlFor="hours">Scholarship Hours</label>
+                    <label htmlFor="datetimeStartDate">Start Date</label>
                     <input
-                      type="number"
-                      id="hours"
-                      name="hours"
-                      value={formData.hours}
+                      type="date"
+                      id="datetimeStartDate"
+                      name="datetimeStartDate"
+                      value={formData.datetimeStartDate}
                       onChange={handleChange}
                       required
                     />
 
-                    {/* Date and Time Inputs */}
-                    {formData.datetime.map((dateTime, index) => (
-                      <div key={index}>
-                        <label htmlFor={`start${index}`}>Start Date and Time of Work {index + 1}</label>
-                        <input
-                          type="datetime-local"
-                          id={`start${index}`}
-                          name={`start${index}`}
-                          value={dateTime.start}
-                          onChange={(e) => handleDateTimeChange(index, 'start', e.target.value)}
-                          required
-                        />
+                    <label htmlFor="datetimeStartTime">Start Time</label>
+                    <input
+                      type="time"
+                      id="datetimeStartTime"
+                      name="datetimeStartTime"
+                      value={formData.datetimeStartTime}
+                      onChange={handleChange}
+                      required
+                    />
 
-                        <label htmlFor={`end${index}`}>End Date and Time of Work {index + 1}</label>
-                        <input
-                          type="datetime-local"
-                          id={`end${index}`}
-                          name={`end${index}`}
-                          value={dateTime.end}
-                          onChange={(e) => handleDateTimeChange(index, 'end', e.target.value)}
-                          required
-                        />
-                        
-                        <button className={['remove-box']} type="button" onClick={() => removeDateTime(index)}>
-                          Remove
-                        </button>
-                      </div>
-                    ))}
-                    <div>
-                      <button className={styles['datetime-box']} type="button" onClick={addDateTime}>
-                        Add Date and Time
-                      </button>
-                    </div>
+                    <label htmlFor="datetimeEndDate">End Date</label>
+                    <input
+                      type="date"
+                      id="datetimeEndDate"
+                      name="datetimeEndDate"
+                      value={formData.datetimeEndDate}
+                      onChange={handleChange}
+                      required
+                    />
+
+                    <label htmlFor="datetimeEndTime">End Time</label>
+                    <input
+                      type="time"
+                      id="datetimeEndTime"
+                      name="datetimeEndTime"
+                      value={formData.datetimeEndTime}
+                      onChange={handleChange}
+                      required
+                    />
+
+                    <label htmlFor="scholarshipHours">Scholarship Hours</label>
+                    <input
+                      type="number"
+                      id="scholarshipHours"
+                      name="scholarshipHours"
+                      value={formData.scholarshipHours}
+                      onChange={handleChange}
+                      required
+                    />
+
                     <label htmlFor="location">Location of Work</label>
                     <input
                       type="text"
@@ -159,7 +150,7 @@ export default function Create() {
                       required
                     />
 
-                    <label htmlFor="details">Details</label>
+                    <label htmlFor="details">Description</label>
                     <textarea
                       id="details"
                       name="details"
@@ -200,7 +191,6 @@ export default function Create() {
             </div>
           </div>
         </div>
-
       </div>
     </>
   );
