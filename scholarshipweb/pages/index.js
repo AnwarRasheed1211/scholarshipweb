@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import styles from '../styles/login.module.css';
+import styles from '../components/login.module.css';
 import Image from 'next/image';
 
 
@@ -29,23 +29,22 @@ export default function LoginPage() {
     <div className={styles['login-page']}>
       <div className={styles['login-container']}>
         <div className={styles['login-content']}>
-          <Image src="/abac_logo.png" alt="Image" width={100} height={100} className={styles['logo-image']}/>
+          <Image src="/abac_logo.png" alt="Image" width={80} height={80} className={styles['logo-image']}/>
           <div className={styles['login-heading-container']}>
-            <div className={styles['login-heading']}>Scholarship
-            </div>
+            <div className={styles['login-heading']}>Scholarship</div>
           </div>
         </div>
       <form onSubmit={handleSubmit}>
         <div className={styles['form-group']}>
           <label className={styles['label']}>Email</label>
           <div className={styles['input-group']}>
-          <input type="email" value={email} onChange={handleEmailChange} className={styles['input-color']} size={30} />
+          <input type="email" value={email} onChange={handleEmailChange} className={styles['input-color']}/>
           </div>
         </div>
         <div className={styles['form-group']}>
           <label className={styles['label']}>Password</label>
           <div className={styles['input-group']}>
-          <input type="password" value={password} onChange={handlePasswordChange} className={styles['input-color']} size={30}/>
+          <input type="password" value={password} onChange={handlePasswordChange} className={styles['input-color']} />
           </div>
         </div>
         <div className={styles['buttons-container']}>
@@ -56,7 +55,7 @@ export default function LoginPage() {
         </button>
         <button className={styles['registerbutton']}>
           <Link href ="/registerHome">
-              Register
+              Registrar
           </Link>
         </button>
         <button className={styles['staffbutton']}>
@@ -72,3 +71,4 @@ export default function LoginPage() {
   );
   
 }
+
